@@ -1,0 +1,34 @@
+:root {
+    --primary-color: #357b70; /*TBD*/
+    --secondary-color: #ebed7d;
+    --third-color: #f14f4f;
+    --heading-font-weight: 80;
+}
+
+body {
+    font-family: 'Jura', sans-serif;    font-weight: 400;
+    font-size: 18px;
+    /* Sets the font size to 18px */
+    line-height: 1.6;
+    /* Sets the line-height to 1.6 */
+    /* background-color: var(--secondary-color);*/
+    background: linear-gradient(100deg, var(--secondary-color), white, var(--third-color));
+    padding: 30px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: var(--heading-font-weight);
+}
+
+ /* ==================== MEDIA ==================== */
+ @media all and (max-width: 750px) {
+     h1 {
+         font-size: 31px;
+     }
+ }
