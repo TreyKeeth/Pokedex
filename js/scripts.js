@@ -28,10 +28,9 @@ let pokemonRepository = (function () {
 function printPokemonList(pokemon) {
     if (pokemon.height < 1) {
                 document.write(pokemon.name + ' ' + '(height) ' + pokemon.height + ' ' + "<br>")
-            } 
-            else {
+        } else {
                 document.write(pokemon.name + ' ' + '(height) ' + pokemon.height + ' ' + 'Wow, that\'s big!' + "<br>")
-            }
+        }
 };
 
 // adding pokemon to the array
