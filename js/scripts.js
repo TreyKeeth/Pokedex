@@ -1,29 +1,24 @@
 
-// pokemonRepository variable for adding, retrieving, and printing the list of pokemons
+// IIFE for adding, retrieving, and printing the list of pokemons
 let pokemonRepository = (function () {
-    //initial list of pokemon
-    let repository = [
-        { name: 'Pikachu', height: 0.4, types: ['electric'] },
-        { name: 'Rattata', height: 0.3, types: ['normal'] }
-    ];   
-// function within IIFE to add pokemon or print error option if an invalid name value is provided
+    let pokemonList = [];  
+    // API where Pokemon information is pulled from
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
     function add(pokemon) {
         if (typeof pokemon === "object" &&
-            'name' in pokemon &&
-            'height' in pokemon && 
-            'types' in pokemon
+            'name' in pokemon
             ) {
-            repository.push(pokemon);
+            pokemonList.push(pokemon);
         } else {
             document.write("This is not a pokemon. Please enter a valid name." + "<br>");
         }
     }
-// function to retrieve lists on pokemon in the array    
+   
     function getAll() {
-        return repository;
+        return pokemonList;
     }
-// function to print list of all pokemon and also show pokemon information in the console for a pokemon when their 
-// associated button is clicked
+    // adding a listing of buttons for each pokemon from the API
     function addListItem(pokemon) {
         let pokemonList = document.querySelector(".pokemon-list");
         let listItem = document.createElement("li");
@@ -32,35 +27,62 @@ let pokemonRepository = (function () {
         button.classList.add("button-class");
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
-        button.addEventListener('click', function () {
+        button.addEventListener("click", function (event) {
             showDetails(pokemon);
         })
     }
-//function to show pokemon information in console
+
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+                console.log(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
+
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (details) {
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.types;
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
+
     function showDetails(pokemon) {
+    pokemonRepository.loadDetails(pokemon).then(function () {
         console.log(pokemon);
+        });
     }
 
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
-        showDetails: showDetails
+        loadList: loadList, 
+        loadDetails: loadDetails, 
+        showDetails: showDetails, 
     };
 })();
 
-// adding pokemon to the array
-pokemonRepository.add({ name: 'Charizard', height: 5.07, types: ['fire', 'flying'] });
-pokemonRepository.add({ name: 'Weedle', height: 0.3, types: ['bug', 'poison'] });
-// test to prompt the printing of the invalid Pokemon message in the add function within the IIFE
-pokemonRepository.add();
-// get of the pokemon list in the console
-console.log(pokemonRepository.getAll()); 
-// print the list of pokemon
-// pokemonRepository.getAll().forEach(printPokemonList);
-// print the list of pokemon
-pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function () {
+    pokemonRepository.getAll().forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
 });
+
 
 
