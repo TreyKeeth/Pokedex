@@ -15,8 +15,8 @@ body {
     /* Sets the line-height to 1.6 */
     /* background-color: var(--secondary-color);*/
     background: linear-gradient(100deg, var(--secondary-color), white, var(--third-color));
-    padding: 30px;
-    text-align: left;
+    padding-top: 30px;
+    text-align: center;
 }
 
 * {
@@ -26,27 +26,32 @@ body {
 h1 {
     font-size: 40px;
     font-weight: var(--heading-font-weight);
+    text-align: center;
 }
 
-.button-class {
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
+h2 {
+    font-size: 34px;
+    font-weight: var(--heading-font-weight);
+    text-align: left;
     text-transform: capitalize;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+}
+
+
+.btn {
+    padding: 5px 10px;
+    text-transform: capitalize;
+    font-size: 18px;
+    margin: 10px 10px;
     -webkit-transition-duration: 0.4s;
     /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    background-color: rgb(240, 237, 237);
     color: black;
-    border: 2px solid #182c68;
 }
 
-li {
-    align-items: center;
+.grid {
+    display: grid;
+    
 }
 
 #modal-container {
@@ -81,12 +86,9 @@ li {
     text-align: left;
 }
 
-.modal-close {
+.btn-close {
     float: right;
-    -webkit-appearance: none;
-    border: 0;
-    background: none;
-    color: #777;
+    cursor: pointer;
     text-decoration: underline;
 }
 
