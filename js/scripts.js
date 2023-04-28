@@ -21,10 +21,11 @@ let pokemonRepository = (function () {
     // adding a listing of buttons for each pokemon from the API
     function addListItem(pokemon) {
         let pokemonList = document.querySelector(".pokemon-list");
-        let listItem = document.createElement("li");
-        let button = document.createElement("button");
+        let listItem = document.createElement("list-group-item");
+        let button = document.createElement("btn");
+        listItem.classList.add("list-group-item");
         button.innerText = pokemon.name;
-        button.classList.add("button-class");
+        button.classList.add("btn");
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
         button.addEventListener("click", function (event) {
@@ -78,12 +79,12 @@ let pokemonRepository = (function () {
             let modal = document.createElement('div');
             modal.classList.add('modal');
 
-            let closeButtonElement = document.createElement('button');
-            closeButtonElement.classList.add('modal-close');
+            let closeButtonElement = document.createElement('btn');
+            closeButtonElement.classList.add('btn-close');
             closeButtonElement.innerText = 'Close';
             closeButtonElement.addEventListener('click', hideModal);
 
-            let pokemonName = document.createElement('h1')
+            let pokemonName = document.createElement('h2')
             pokemonName.innerText = item.name;
 
             let pokemonHeight = document.createElement('p');
