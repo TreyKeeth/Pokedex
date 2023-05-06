@@ -32,7 +32,6 @@ body {
     -webkit-transition-duration: 0.4s;
     /* Safari */
     transition-duration: 0.4s;
-    cursor: pointer;
     background-color: #2082c8;
 }
 
@@ -40,7 +39,6 @@ h1 {
     text-align: center;
     padding-bottom: 20px;
     padding-left: 30px;
-    padding-top: 20px;
 }
 
 
