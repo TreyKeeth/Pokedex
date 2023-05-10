@@ -18,7 +18,6 @@ let pokemonRepository = (function () {
     function getAll() {
         return pokemonList;
     }
-
     // adding a listing of buttons for each pokemon from the API
     function addListItem(pokemon) {
         let pokemonList = document.querySelector(".pokemon-list");
@@ -92,7 +91,7 @@ let pokemonRepository = (function () {
             });
 
             let pokemonTypes = $("<p>" + "Types : " + allTypes + "</p>");
-            let pokemonImage = $('<img class="modal-imgstyle=width:50%">');
+            let pokemonImage = $('<img class="modal-imgstyle"="width:50%">');
             pokemonImage.attr("src", item.imageUrl);
 
             modalTitle.append(pokemonName);
@@ -102,6 +101,7 @@ let pokemonRepository = (function () {
 
         }
 
+    
     return {
         add: add,
         getAll: getAll,
