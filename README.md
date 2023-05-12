@@ -1,3 +1,1 @@
-*Pokedex Javascript App
-
-Pokemon API is utilized.
+I created a web application with HTML, CSS, and JavaSript that loads data from an external API that enables viewing detailed data points for Pokemon. Each pokemon has a button that can be selected to view applicable information such as height, type, and an image.
