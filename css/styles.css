@@ -14,32 +14,50 @@ body {
     line-height: 1.6;
     /* Sets the line-height to 1.6 */
     text-transform: capitalize;
-    background-color: rgb(206, 202, 202);
+    background:var(--secondary-color);
     color: black;
 } 
 
 .list-group-item {
-        background-color: var(--secondary-color);
-        background: linear-gradient(100deg, var(--secondary-color), white, var(--third-color));
         text-align: center;
+        background: transparent;
+        border: none;
 }
 
 .btn {
-    padding: 5px 10px;
     text-transform: capitalize;
     font-size: 18px;
-    margin: 10px 10px;
     -webkit-transition-duration: 0.4s;
     /* Safari */
     transition-duration: 0.4s;
     background-color: #2082c8;
+    width: 400px;
 }
 
 h1 {
     text-align: center;
     padding-bottom: 20px;
-    padding-left: 30px;
+    padding-top: 20px;
 }
+
+.pokemon-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 14px;
+    }
+
+@media all and (max-width: 1000px) {
+    .pokemon-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media all and (min-width: 1000px) and (max-width: 1400px) {
+    .pokemon-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 
 
 
